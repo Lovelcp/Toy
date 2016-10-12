@@ -37,6 +37,8 @@ public class AkkaAgent extends UntypedActor {
             if (++finishedMergeWorkerCount == threadCount) {
                 // 如果已经合并结束了，那么就关闭整个akka system，释放资源
                 getContext().system().shutdown();
+                long end = System.currentTimeMillis();
+                System.out.println("akka:" + (end - start));
             }
         }
     }
